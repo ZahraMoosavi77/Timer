@@ -14,10 +14,13 @@ export default function DateTimePickerValue() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['DateTimePicker', 'DateTimePicker']}>
         <DateTimePicker
-          label="Controlled picker"
+          
           value={value}
           onChange={(newValue) => setValue(newValue)}
-          sx={{color:'blue', width:'80px'}}
+          sx={{color:'blue', width:'80px', bgcolor:'white',overflow:'hidden',  outline:'none'
+         
+          }}
+          
         />
       </DemoContainer>
     </LocalizationProvider>

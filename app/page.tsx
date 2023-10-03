@@ -17,16 +17,19 @@ export default function page() {
     >
       <Grid
         container
-        direction="row"
+        direction="column"
         justifyContent="center"
         alignItems="center"
+        bgcolor={"white"}
+        sx={{flexDirection:{sm:"row"}}}
        
       >
-        <Grid item xs={2} >
-          <ToggleButtons />
-        </Grid>
-        <Grid item>
+        <Grid item xs={12} sm={6} md={5} >
           <BasicDateTimePicker />
+        </Grid>
+        
+        <Grid item xs={12} sm={2} md={2}  >
+          <ToggleButtons />
         </Grid>
       </Grid>
 
