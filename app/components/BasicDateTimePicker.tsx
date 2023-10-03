@@ -1,14 +1,24 @@
+'use client'
+
 import * as React from 'react';
+import dayjs, { Dayjs } from 'dayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
-export default function BasicDateTimePicker() {
+export default function DateTimePickerValue() {
+  const [value, setValue] = React.useState<Dayjs | null>(dayjs('2022-04-17T15:30'));
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={['DateTimePicker']}>
-        <DateTimePicker label="Basic date time picker" />
+      <DemoContainer components={['DateTimePicker', 'DateTimePicker']}>
+        <DateTimePicker
+          label="Controlled picker"
+          value={value}
+          onChange={(newValue) => setValue(newValue)}
+          sx={{color:'blue'}}
+        />
       </DemoContainer>
     </LocalizationProvider>
   );
