@@ -17,7 +17,7 @@ export default function DateTimePickerValue() {
           label="Controlled picker"
           value={value}
           onChange={(newValue) => setValue(newValue)}
-          sx={{color:'blue'}}
+          sx={{color:'blue', width:'80px'}}
         />
       </DemoContainer>
     </LocalizationProvider>

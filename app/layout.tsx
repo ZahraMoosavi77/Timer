@@ -24,8 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+       <ThemeRegistry>
       <body className={inter.className}>
-        <ThemeRegistry>
+       
         <AppBar position="fixed" sx={{ zIndex: 2000 }}>
             <Toolbar sx={{ backgroundColor: 'white' }}>
               <AccessTimeFilledIcon sx={{color: 'black', mr:'8px'}}></AccessTimeFilledIcon>
@@ -34,8 +35,9 @@ export default function RootLayout({
               </Typography>
             </Toolbar>
           </AppBar>
-          {children}</ThemeRegistry>
+          {children}
       </body>
+      </ThemeRegistry>
     </html>
   );
 }
