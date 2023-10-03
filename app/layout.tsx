@@ -1,7 +1,14 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Timer10Icon from '@mui/icons-material/Timer10';
+import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import ThemeRegistry from "./components/ThemeRegistry/ThemeRegistry";
+
+import Typography from '@mui/material/Typography';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +25,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+        <AppBar position="fixed" sx={{ zIndex: 2000 }}>
+            <Toolbar sx={{ backgroundColor: 'white' }}>
+              <AccessTimeFilledIcon sx={{color: 'black', mr:'8px'}}></AccessTimeFilledIcon>
+              <Typography variant="h6" noWrap component="div" color="black">
+                Timer App
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          {children}</ThemeRegistry>
       </body>
     </html>
   );
