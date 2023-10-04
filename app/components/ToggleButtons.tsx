@@ -11,9 +11,9 @@ export default function ToggleButtons() {
 
   const handleDirection = (
     event: React.MouseEvent<HTMLElement>,
-    newAlignment: string | null
+    newDirection: string | null
   ) => {
-    setDirection(newAlignment);
+    setDirection(newDirection);
   };
 
   return (
