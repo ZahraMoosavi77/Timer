@@ -87,7 +87,22 @@ body {
 }
 
 body {
-  background-image: url("../public/background.jpg");
+  background-image: url("../public/clock.jpg");
+  background-position: 50% 70%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+}
+body::after {
+  content: "";
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: black;
+  opacity: 0.4;
 }
 
 a {
