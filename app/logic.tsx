@@ -1,19 +1,19 @@
 "use client";
 
-import Image from "next/image";
-import styles from "./page.module.css";
+
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [isCountUp, setISCountUP] = useState(false);
+ 
   const [partyTime, setPartyTime] = useState(false);
-  const [years,setYears] = useState(0)
-  const [mounths, setMounths] = useState(0)
-  const [days, setDays] = useState(0);
-  const [hours, setHours] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
-  const [time, setTime] = useState(0);
+  
+  // yedone
+  
+  
+
+  
+
+  
 
   useEffect(() => {
     const target = new Date("12/4/2023 15:20:00");
