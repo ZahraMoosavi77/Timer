@@ -7,20 +7,20 @@ import KeyboardDoubleArrowDownIcon from "@mui/icons-material/KeyboardDoubleArrow
 import { Typography } from "@mui/material";
 
 export default function ToggleButtons() {
-  const [alignment, setAlignment] = useState<string | null>("left");
+  const [direction, setDirection] = useState<string | null>("down");
 
-  const handleAlignment = (
+  const handleDirection = (
     event: React.MouseEvent<HTMLElement>,
     newAlignment: string | null
   ) => {
-    setAlignment(newAlignment);
+    setDirection(newAlignment);
   };
 
   return (
     <ToggleButtonGroup
-      value={alignment}
+      value={direction}
       exclusive
-      onChange={handleAlignment}
+      onChange={handleDirection}
       aria-label="timer"
       size="large"
       sx={{ backgroundColor: "white" }}
