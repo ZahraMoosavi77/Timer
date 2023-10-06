@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
  
-  const [partyTime, setPartyTime] = useState(false);
+  
   
   // yedone
   
