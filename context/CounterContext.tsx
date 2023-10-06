@@ -1,4 +1,7 @@
+"use client"
+
 import React, { useState, createContext } from "react";
+import dayjs, { Dayjs } from 'dayjs';
 
 interface TimerProviderProps {
   children: React.ReactNode;
@@ -11,10 +14,12 @@ export const TimerContext = createContext({
   setIsCountUP: (isCountUp: boolean) => {},
   isEnd: false,
   setIsEnd: (isCountUp: boolean) => {},
+  isReset: false,
+  setIsReset: (isCountUp: boolean) => {},
   years: 0,
   setYears: (years: number) => {},
-  mounths: 0,
-  setMounths: (mounth: number) => {},
+  months: 0,
+  setMonths: (mounth: number) => {},
   days: 0,
   setDays: (days: number) => {},
   hours: 0,
@@ -24,20 +29,29 @@ export const TimerContext = createContext({
   seconds: 0,
   setSeconds: (seconds: number) => {},
   time: 0,
-  setTime: (time: number) => {},
+  setTime: (time: any) => {},
+  value:dayjs(new Date()),
+  setValue:(value:any)=>{},
+  isUp:false,
+  setIsUp:(value:boolean) =>{}
+  
 });
 
 export const TimerProvider = ({ children }: TimerProviderProps) => {
   const [isCounting, setIsCounting] = useState(false);
   const [isCountUp, setIsCountUP] = useState(false);
+  const [isReset, setIsReset] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
   const [years, setYears] = useState(0);
-  const [mounths, setMounths] = useState(0);
+  const [months, setMonths] = useState(0);
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const [time, setTime] = useState(0);
+  const [value, setValue] = useState(dayjs(new Date()));
+  const [isUp,setIsUp] = useState(false);
+  
 
   return (
     <TimerContext.Provider
@@ -48,10 +62,12 @@ export const TimerProvider = ({ children }: TimerProviderProps) => {
         setIsCountUP,
         isEnd,
         setIsEnd,
+        isReset,
+        setIsReset,
         years,
         setYears,
-        mounths,
-        setMounths,
+        months,
+        setMonths,
         days,
         setDays,
         hours,
@@ -62,6 +78,11 @@ export const TimerProvider = ({ children }: TimerProviderProps) => {
         setSeconds,
         time,
         setTime,
+        value,
+        setValue,
+        isUp,
+        setIsUp,
+        
       }}
     >
       {children}
