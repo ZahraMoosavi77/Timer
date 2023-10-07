@@ -3,7 +3,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 import {useTimerContext} from "../../hooks/useTimerContext"
-type NumberType = { date: {name:string, value:number}; isLast: boolean };
+type NumberType = { date: {id:number,name:string, value:number}; isLast: boolean };
 export default function number({ date, isLast }: NumberType) {
   return (
     <Box
