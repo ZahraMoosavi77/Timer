@@ -18,9 +18,9 @@ const ToggleButton = styled(MuiToggleButton)({
   }
 });
 export default function ToggleButtons() {
-  const [direction, setDirection] = useState<string | null>("down");
+  // const [direction, setDirection] = useState<string | null>("down");
   
-  const {isUp, setIsUp, setTime}=  useTimerContext()
+  const { setIsUp, setTime,direction,setDirection}=  useTimerContext()
   const handleDirection = (
     event: React.MouseEvent<HTMLElement>,
     newDirection: string | null
