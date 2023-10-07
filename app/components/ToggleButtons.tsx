@@ -57,7 +57,7 @@ export default function ToggleButtons() {
         onClick={handleUp}
       >
         <Typography variant="body1" component="p" sx={{ color: "black" , display:{xs:'none', sm:'block'}  }}>
-          Increase
+          Stop Watch
         </Typography>
         <KeyboardDoubleArrowUpIcon sx={{ color: "black" }} />
       </ToggleButton>
@@ -69,7 +69,7 @@ export default function ToggleButtons() {
       >
         <KeyboardDoubleArrowDownIcon sx={{ color: "black" }} />
         <Typography variant="body1" component="p" sx={{ color: "black",display:{xs:'none',sm:'block'} }}>
-          Decrease
+          Timer
         </Typography>
         
       </ToggleButton>
