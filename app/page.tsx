@@ -1,5 +1,3 @@
-'use client'
-
 import { Grid } from "@mui/material";
 import ToggleButtons from "./components/ToggleButtons";
 import BasicDateTimePicker from "./components/BasicDateTimePicker";
@@ -8,8 +6,6 @@ import Numbers from "./components/TimerPanel";
 import { TimerProvider } from "../context/CounterContext";
 
 export default function page() {
-  console.log('render');
-  
   return (
     <TimerProvider>
       <Grid
