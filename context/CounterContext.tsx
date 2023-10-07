@@ -10,12 +10,11 @@ interface TimerProviderProps {
 export const TimerContext = createContext({
   isCounting: false,
   setIsCounting: (isCounting: boolean) => {},
-  isCountUp: false,
-  setIsCountUP: (isCountUp: boolean) => {},
+  
   isEnd: false,
-  setIsEnd: (isCountUp: boolean) => {},
+  setIsEnd: (isEnd: boolean) => {},
   isReset: false,
-  setIsReset: (isCountUp: boolean) => {},
+  setIsReset: (isReset: boolean) => {},
   years: 0,
   setYears: (years: number) => {},
   months: 0,
@@ -33,7 +32,12 @@ export const TimerContext = createContext({
   value:dayjs(new Date()),
   setValue:(value:any)=>{},
   isUp:false,
-  setIsUp:(value:boolean) =>{}
+  setIsUp:(isUp:boolean) =>{},
+  direction:"down",
+  setDirection:(direction:any)=>{},
+  isWrongTarget:false,
+  setIsWrongTarget:(isUp:boolean) =>{},
+
   
 });
 
@@ -51,15 +55,17 @@ export const TimerProvider = ({ children }: TimerProviderProps) => {
   const [time, setTime] = useState(0);
   const [value, setValue] = useState(dayjs(new Date()));
   const [isUp,setIsUp] = useState(false);
-  
+  const [isWrongTarget,setIsWrongTarget] = useState(false);
+  const [direction, setDirection] = useState("down");
+  const [test,setTest] =useState([ { id: 1, name: "Year", value: 0 },{},{}])  
 
   return (
     <TimerContext.Provider
       value={{
+        isWrongTarget,
+        setIsWrongTarget,
         isCounting,
         setIsCounting,
-        isCountUp,
-        setIsCountUP,
         isEnd,
         setIsEnd,
         isReset,
@@ -82,6 +88,8 @@ export const TimerProvider = ({ children }: TimerProviderProps) => {
         setValue,
         isUp,
         setIsUp,
+        direction,
+        setDirection,
         
       }}
     >
