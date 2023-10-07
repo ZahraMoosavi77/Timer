@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import { Box, Typography } from "@mui/material";
 import Number from "./Number";
 import { useTimerContext } from "../../hooks/useTimerContext";
+import { Watch, watchAction } from "@/context/CounterContext"; 
 import dayjs, { Dayjs } from "dayjs";
 import {dateArray} from '../../constant/index'
 import EndCount from "./EndMessage";
 import ChooseTimeMessage from "./ChooseTimeMessage";
+
 
 export default function Numbers() {
   const {
@@ -35,15 +37,22 @@ export default function Numbers() {
     isUp,
     isWrongTarget
   } = useTimerContext();
-  const dateArray = [
-    { id: 1, name: "Year", value: years },
-    { id: 2, name: "Mounth", value: months },
-    { id: 3, name: "Days", value: days },
-    { id: 4, name: "Hours", value: hours },
-    { id: 5, name: "Minutes", value: minutes },
-    { id: 7, name: "Seconds", value: seconds },
-  ];
 
+  const test= useContext(Watch);
+  const setTest= useContext(watchAction)
+
+
+  const dateArray = [
+    
+    { id: 1, name: "Hours", value: hours },
+    { id: 2, name: "Minutes", value: minutes },
+    { id: 3, name: "Seconds", value: seconds },
+  ];
+  // const [test, setTest] = useState([
+  //   { id: 1, name: "Year", value: 0 },
+  //   { id: 2, name: "Minutes", value: 0 },
+  //   { id: 3, name: "Seconds", value: 0 },
+  // ]);
   const REACHTIME = value;
 
   const interval: any = useRef(null);
@@ -72,7 +81,8 @@ export default function Numbers() {
         
 
         const SECOND = Math.floor((difference % (1000 * 60)) / 1000);
-        setSeconds(SECOND);
+        // setSeconds(SECOND);
+        // setTest([...,{}])
         const MINUTE = Math.floor(
           (difference % (1000 * 60 * 60)) / (1000 * 60)
         );
@@ -171,8 +181,8 @@ export default function Numbers() {
           display: "flex",
         }}
       >
-        {isEnd ? (<EndCount/>)  : isWrongTarget ? (<ChooseTimeMessage/>) :dateArray.map((item, index) => (
-          <Number key={item.id} date={item} isLast={index + 1 == dateArray.length} />
+        {isEnd ? (<EndCount/>)  : isWrongTarget ? (<ChooseTimeMessage/>) :test.map((item, index) => (
+          <Number key={item.id} date={item} isLast={index + 1 == test.length} />
         ))}
         
       </Box>
