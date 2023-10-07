@@ -1,16 +1,40 @@
-"use client"
+"use client";
 
 import React, { useState, createContext } from "react";
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from "dayjs";
 
 interface TimerProviderProps {
   children: React.ReactNode;
 }
 
+type WatchContextType = {
+  id: number;
+  name: string;
+  value: number;
+}[];
+
+export const Watch = createContext<WatchContextType>([
+  { id: 1, name: "Year", value: 0 },
+  { id: 2, name: "Minutes", value: 0 },
+  { id: 3, name: "Seconds", value: 0 },
+]);
+
+export const watchAction = createContext<
+  React.Dispatch<
+    React.SetStateAction<
+      {
+        id: number;
+        name: string;
+        value: number;
+      }[]
+    >
+  >
+>(() => {});
+
 export const TimerContext = createContext({
   isCounting: false,
   setIsCounting: (isCounting: boolean) => {},
-  
+
   isEnd: false,
   setIsEnd: (isEnd: boolean) => {},
   isReset: false,
@@ -29,16 +53,14 @@ export const TimerContext = createContext({
   setSeconds: (seconds: number) => {},
   time: 0,
   setTime: (time: any) => {},
-  value:dayjs(new Date()),
-  setValue:(value:any)=>{},
-  isUp:false,
-  setIsUp:(isUp:boolean) =>{},
-  direction:"down",
-  setDirection:(direction:any)=>{},
-  isWrongTarget:false,
-  setIsWrongTarget:(isUp:boolean) =>{},
-
-  
+  value: dayjs(new Date()),
+  setValue: (value: any) => {},
+  isUp: false,
+  setIsUp: (isUp: boolean) => {},
+  direction: "down",
+  setDirection: (direction: any) => {},
+  isWrongTarget: false,
+  setIsWrongTarget: (isWrongTarget: boolean) => {},
 });
 
 export const TimerProvider = ({ children }: TimerProviderProps) => {
@@ -54,10 +76,14 @@ export const TimerProvider = ({ children }: TimerProviderProps) => {
   const [seconds, setSeconds] = useState(0);
   const [time, setTime] = useState(0);
   const [value, setValue] = useState(dayjs(new Date()));
-  const [isUp,setIsUp] = useState(false);
-  const [isWrongTarget,setIsWrongTarget] = useState(false);
+  const [isUp, setIsUp] = useState(false);
+  const [isWrongTarget, setIsWrongTarget] = useState(false);
   const [direction, setDirection] = useState("down");
-  const [test,setTest] =useState([ { id: 1, name: "Year", value: 0 },{},{}])  
+  const [test, setTest] = useState([
+    { id: 1, name: "Year", value: 0 },
+    { id: 2, name: "Minutes", value: 0 },
+    { id: 3, name: "Seconds", value: 0 },
+  ]);
 
   return (
     <TimerContext.Provider
@@ -90,10 +116,11 @@ export const TimerProvider = ({ children }: TimerProviderProps) => {
         setIsUp,
         direction,
         setDirection,
-        
       }}
     >
-      {children}
+      <watchAction.Provider value={setTest}>
+        <Watch.Provider value={test}>{children}</Watch.Provider>
+      </watchAction.Provider>
     </TimerContext.Provider>
   );
 };
